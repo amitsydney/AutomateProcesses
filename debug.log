@@ -1,0 +1,149 @@
+[root@vpsl36610 ~]# /opt/OV/bin/ovcert -list
++---------------------------------------------------------+
+| Keystore Content                                        |
++---------------------------------------------------------+
+| Certificates:                                           |
+|     0aa8530e-45a1-7595-1327-a2ae1da3a1e3 (*)            |
++---------------------------------------------------------+
+| Trusted Certificates:                                   |
+|     CA_311e3926-6358-7571-140c-cd2eaf00890b             |
+|     CA_311e3926-6358-7571-140c-cd2eaf00890b_2048        |
+|     CA_97eeaa2c-d025-7551-0981-b9dc3e3e1b8d             |
+|     CA_af24bc46-9c8c-7572-0862-b179f755633f             |
+|     CA_af24bc46-9c8c-7572-0862-b179f755633f_2048        |
+|     CA_e32f3e3c-b9e2-7557-0f6e-c8f00ab3c44e             |
+|     CA_e32f3e3c-b9e2-7557-0f6e-c8f00ab3c44e_2048        |
+|     CA_eee9bb76-b9e2-7557-0b9f-c1795e19fc2c             |
+|     CA_eee9bb76-b9e2-7557-0b9f-c1795e19fc2c_2048        |
++---------------------------------------------------------+
+
+[root@vpsl36610 ~]# /opt/OV/bin/ovcoreid -show
+70d67a6a-7264-7597-18ec-eb5b4eccde46
+[root@vpsl36610 ~]# /opt/OV/bin/ovcert -status
+Status: Certificate is installed.
+[root@vpsl36610 ~]# /opt/OV/bin/ovpolicy -l
+       * List installed policies for host 'localhost'.
+  (conf-572) General I/O exception while connecting to host 'localhost'.
+         (sec.core-116) An SSL connection IO error has occurred. This may be
+         due to a network problem or an SSL handshake error. Possible causes
+         for SSL handshake errors are that no certificate is installed, an
+         invalid certificate is installed, or the peer does not trust the
+         initiator's certificate.
+[root@vpsl36610 ~]# /opt/OV/bin/opcagt -status
+scopeux     Perf Agent data collector                        (6263)   Running
+midaemon    Measurement Interface daemon                     (6097)   Running
+ttd         ARM registration daemon                          (5996)   Running
+perfalarm   Alarm generator                                  (6313)   Running
+(ctrl-21) Communication error when executing 'Status' method.
+ (sec.core-116) An SSL connection IO error has occurred. This may be due to a network problem or an SSL handshake error. Possible ca                    uses for SSL handshake errors are that no certificate is installed, an invalid certificate is installed, or the peer does not trust                     the initiator's certificate.
+Message Agent is not buffering.
+[root@vpsl36610 ~]# /opt/OV/bin/opcagt -kill
+(ctrl-15) Communication error when executing 'Stop' method.
+ (sec.core-116) An SSL connection IO error has occurred. This may be due to a network problem or an SSL handshake error. Possible ca                    uses for SSL handshake errors are that no certificate is installed, an invalid certificate is installed, or the peer does not trust                     the initiator's certificate.
+[root@vpsl36610 ~]# /opt/OV/bin/ovc -kill
+[root@vpsl36610 ~]# /opt/OV/bin/opcagt -status
+scopeux     Perf Agent data collector                                 Stopped
+midaemon    Measurement Interface daemon                              Stopped
+ttd         ARM registration daemon                                   Stopped
+perfalarm   Alarm generator                                           Stopped
+(ctrl-111) Ovcd is not yet started.
+Could not contact Message Agent to query buffering state.
+[root@vpsl36610 ~]# /opt/OV/bin/ovcstatus
+(ctrl-111) Ovcd is not yet started.
+[root@vpsl36610 ~]# /opt/OV/bin/opcagt -h
+Usage: /opt/OV/bin/opcagt [-? | -help | -stop | -stop -coda | -stop -CODA | -stop coda | -stop CODA  | -kill | -start | -restart | -cleanstart| -status | -type [-verbose] | -version | -base_version | -patch_version | -hotfix_version | -list_all_versions]
+  -help|h|?   Prints this message.
+  -stop        Stop Event/Action Agent and stop Coda only when either OVPA not installed or not running.
+  -stop coda|CODA|-coda|-CODA       Stop Coda only.
+  -kill        Stop OV Core functionality.
+  -start       Start Event/Action Agent and Coda.
+  -restart     Restart Event/Action Agent and Performance collection component.
+  -cleanstart  Restart Event/Action Agent doing a cleanup of temporary files.
+  -status      Show status of Event/Action Agent and Coda.
+  -type        Show type of Event/Action Agent.
+  -verbose   Show detailed info of Event/Action Agent.
+  -version     Show the base/latest patch version information.
+  -base_version Show the base version installed on the system.
+  -patch_version        Show the latest patch installed on the system.
+  -hotfix_version       Show all the hotfix versions installed on the system.
+  -list_all_versions Show base,patch,hotfix versions installed on the system.
+
+[root@vpsl36610 ~]# /opt/OV/bin/opcagt -start
+(ctrl-12) Communication error when executing 'Start' method.
+ (sec.core-116) An SSL connection IO error has occurred. This may be due to a network problem or an SSL handshake error. Possible causes for SSL handshake errors are that no certificate is installed, an invalid certificate is installed, or the peer does not trust the initiator's certificate.
+[root@vpsl36610 ~]# /opt/OV/bin/ovcstatus
+(ctrl-113) Control daemon is running...But cannot be accessed remotely.Please wait some more time or restart the daemon..
+agtrep      OV Discovery Agent                  AGENT,AgtRep          Stopped
+
+coda        OV Performance Core                 COREXT                Stopped
+
+ompolparm   OM Parameter Handler                AGENT,EA              Stopped
+
+opcacta     OVO Action Agent                    AGENT,EA              Stopped
+
+opccfgfile  OVO configfile Agent                AGENT,EA              Stopped
+
+opceca      OVO Event Correlation               AGENT,EA              Stopped
+
+opcecaas    ECS Annotate Server                 AGENT,EA              Stopped
+
+opcgeni     Generic Source Interceptor          AGENT,EA              Stopped
+
+opcle       OVO Logfile Encapsulator            AGENT,EA              Stopped
+
+opcmona     OVO Monitor Agent                   AGENT,EA              Stopped
+
+opcmsga     OVO Message Agent                   AGENT,EA              Stopped
+
+opcmsgi     OVO Message Interceptor             AGENT,EA              Stopped
+
+opctrapi    OVO SNMP Trap Interceptor           AGENT,EA              Stopped
+
+ovbbccb     OV Communication Broker             CORE         (8322)   Running
+
+ovcd        OV Control                          CORE         (8309)   Running
+
+ovconfd     OV Config and Deploy                COREXT                Stopped
+
+rtmd        HP Real Time Measurement            AGENT                 Stopped
+
+[root@vpsl36610 ~]# /opt/OV/bin/ovc -start
+(ctrl-12) Communication error when executing 'Start' method.
+ (sec.core-116) An SSL connection IO error has occurred. This may be due to a network problem or an SSL handshake error. Possible causes for SSL handshake errors are that no certificate is installed, an invalid certificate is installed, or the peer does not trust the initiator's certificate.
+[root@vpsl36610 ~]# /opt/OV/bin/ovcstatus
+(ctrl-113) Control daemon is running...But cannot be accessed remotely.Please wait some more time or restart the daemon..
+agtrep      OV Discovery Agent                  AGENT,AgtRep          Stopped
+
+coda        OV Performance Core                 COREXT                Stopped
+
+ompolparm   OM Parameter Handler                AGENT,EA              Stopped
+
+opcacta     OVO Action Agent                    AGENT,EA              Stopped
+
+opccfgfile  OVO configfile Agent                AGENT,EA              Stopped
+
+opceca      OVO Event Correlation               AGENT,EA              Stopped
+
+opcecaas    ECS Annotate Server                 AGENT,EA              Stopped
+
+opcgeni     Generic Source Interceptor          AGENT,EA              Stopped
+
+opcle       OVO Logfile Encapsulator            AGENT,EA              Stopped
+
+opcmona     OVO Monitor Agent                   AGENT,EA              Stopped
+
+opcmsga     OVO Message Agent                   AGENT,EA              Stopped
+
+opcmsgi     OVO Message Interceptor             AGENT,EA              Stopped
+
+opctrapi    OVO SNMP Trap Interceptor           AGENT,EA              Stopped
+
+ovbbccb     OV Communication Broker             CORE         (8322)   Running
+
+ovcd        OV Control                          CORE         (8309)   Running
+
+ovconfd     OV Config and Deploy                COREXT                Stopped
+
+rtmd        HP Real Time Measurement            AGENT                 Stopped
+
+[root@vpsl36610 ~]#
